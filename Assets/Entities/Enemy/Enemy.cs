@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour {
 	public float beamSpeed;
 	public float projectileDelay = 2f;
 	public float projectileVariance = 1f;
-	public float shotsPerSecond = 1f;
+	public float shotsPerSecond = .5f;
 
 	private float projectileTimer;
 
@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D col) {
-		if(col.gameObject.GetComponent<Projectile>() && (col.tag != "Enemy")){
+		//if(col.gameObject.GetComponent<Projectile>() && (col.tag != "Enemy")){
 			// We know this object will be a projectile, so cast it 
 			Projectile beam = col.gameObject.GetComponent<Projectile>();
 
@@ -31,7 +31,7 @@ public class Enemy : MonoBehaviour {
 			if(health <= 0)	{
 				Destroy(this.gameObject);
 			}
-		}
+		//}
 	}
 
 	void Update(){
@@ -39,7 +39,6 @@ public class Enemy : MonoBehaviour {
 
 		if(Random.value < probability){
 			Fire();
-			Debug.Log(probability);
 		}
 
 		/*

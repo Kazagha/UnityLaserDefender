@@ -73,7 +73,7 @@ public class Player : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D col) {
-		if(col.gameObject.GetComponent<Projectile>()&& (col.tag != "Player")){
+		//if(col.gameObject.GetComponent<Projectile>()&& (col.tag != "Player")){
 			// We know this object will be a projectile, so cast it 
 			Projectile beam = col.gameObject.GetComponent<Projectile>();
 			
@@ -87,6 +87,6 @@ public class Player : MonoBehaviour {
 			if(health <= 0)	{
 				Destroy(this.gameObject);
 			}
-		}
+		//}
 	}
 }
