@@ -14,17 +14,7 @@ public class EnemyFormation : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		foreach(Transform position in transform) {
-			GameObject enemy = Instantiate (enemyPrefab, position.transform.position, Quaternion.identity) as GameObject;
-			enemy.transform.parent = position;
-		}
-
-		if(Random.Range (0, 2) == 1)
-		{
-			direction = 1;
-		} else {
-			direction = -1;
-		}
+		SpawnEnemies();
 
 		// Find the main camera
 		Camera camera = Camera.main;
@@ -103,17 +93,32 @@ public class EnemyFormation : MonoBehaviour {
 
 		if(AllMembersDead())		{
 			Debug.Log ("All Enemies are dead");
+			SpawnEnemies();
 		}
 	}
 
-	bool AllMembersDead() {
+	private bool AllMembersDead() {
 		// Check if any 'transform' objects have any enemies attached
-		foreach(Transform position in transform) {
-			if(position.childCount > 0){
+		foreach(Transform enemyPos in transform) {
+			if(enemyPos.childCount > 0){
 				return false;
 			}
 		}
 		// Failing that return true
 		return true;
+	}
+
+	private void SpawnEnemies(){
+		foreach(Transform enemyPos in transform) {
+			GameObject enemy = Instantiate (enemyPrefab, enemyPos.transform.position, Quaternion.identity) as GameObject;
+			enemy.transform.parent = enemyPos;
+		}
+		
+		if(Random.Range (0, 2) == 1)
+		{
+			direction = 1;
+		} else {
+			direction = -1;
+		}
 	}
 }
