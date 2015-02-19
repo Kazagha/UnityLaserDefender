@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D col) {
-		//if(col.gameObject.GetComponent<Projectile>() && (col.tag != "Enemy")){
+		if(col.gameObject.GetComponent<Projectile>()){ // && (col.tag != "Enemy")){
 			// We know this object will be a projectile, so cast it 
 			Projectile beam = col.gameObject.GetComponent<Projectile>();
 
@@ -31,7 +31,7 @@ public class Enemy : MonoBehaviour {
 			if(health <= 0)	{
 				Destroy(this.gameObject);
 			}
-		//}
+		}
 	}
 
 	void Update(){
