@@ -6,6 +6,7 @@ public class EnemyFormation : MonoBehaviour {
 	public float width = 5f;
 	public float height = 4f;
 	public float speed = 2.5f;
+	public float spawnDelaySeconds = 1f;
 
 	private float xMinFormation, xMaxFormation;
 	//private enum Direction {LEFT, RIGHT};
@@ -92,8 +93,7 @@ public class EnemyFormation : MonoBehaviour {
 		transform.position += new Vector3(direction * speed * Time.deltaTime, 0, 0);
 
 		if(AllMembersDead())		{
-			Debug.Log ("All Enemies are dead");
-			SpawnEnemies();
+			SpawnUntilFull();
 		}
 	}
 
@@ -108,7 +108,18 @@ public class EnemyFormation : MonoBehaviour {
 		return true;
 	}
 
-	private void SpawnEnemies(){
+	private bool FreePostiton() {
+		// Check if any 'transform' objects have any enemies attached
+		foreach(Transform enemyPos in transform) {
+			if(enemyPos.childCount > 0){
+				return true;
+			}
+		}
+		// Failing that return true
+		return false;
+	}
+
+	void SpawnEnemies(){
 		foreach(Transform enemyPos in transform) {
 			GameObject enemy = Instantiate (enemyPrefab, enemyPos.transform.position, Quaternion.identity) as GameObject;
 			enemy.transform.parent = enemyPos;
@@ -121,4 +132,27 @@ public class EnemyFormation : MonoBehaviour {
 			direction = -1;
 		}
 	}
+
+	void SpawnUntilFull(){
+		// Fetch the next free position
+		Transform freePos = NextFreePosition();
+		// Create the enemy in the specified position
+		GameObject enemy = Instantiate (enemyPrefab, freePos.position, Quaternion.identity) as GameObject;
+		enemy.transform.parent = freePos;
+
+		if(FreePostiton()){
+			Invoke("SpawnUntilFull", spawnDelaySeconds);
+		}
+	}
+
+	Transform NextFreePosition(){
+		foreach(Transform enemyPos in transform) {
+			if(enemyPos.childCount <= 0){
+				return enemyPos;
+			}
+		}
+		return null;
+	}
+
+
 }
