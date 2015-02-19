@@ -15,7 +15,7 @@ public class EnemyFormation : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		SpawnEnemies();
+		SpawnFullFormation();
 
 		// Find the main camera
 		Camera camera = Camera.main;
@@ -92,13 +92,58 @@ public class EnemyFormation : MonoBehaviour {
 		// Move the formation
 		transform.position += new Vector3(direction * speed * Time.deltaTime, 0, 0);
 
+		// Check if all enemies are dead
 		if(AllMembersDead())		{
 			SpawnUntilFull();
 		}
 	}
 
+	/*
+	 * Begin spawning until the formaiton has been filled
+	 */
+	void SpawnUntilFull(){
+		// Fetch the next free position
+		Transform freePos = NextFreePosition();
+		// Create the enemy in the specified position
+		GameObject enemy = Instantiate (enemyPrefab, freePos.position, Quaternion.identity) as GameObject;
+		enemy.transform.parent = freePos;
+		
+		if(FreePostiton()){
+			Invoke("SpawnUntilFull", spawnDelaySeconds);
+		}
+	}
+
+	/*
+	 * Find the next free position to spawn an enemy
+	 */
+	Transform NextFreePosition(){
+		foreach(Transform enemyPos in transform) {
+			if(enemyPos.childCount <= 0){
+				return enemyPos;
+			}
+		}
+		return null;
+	}
+
+	/*
+	 * Check if there are free positions
+	 */
+	private bool FreePostiton() {
+		// Check if any 'transform' objects have enemies attached
+		foreach(Transform enemyPos in transform) {
+			if(enemyPos.childCount > 0){
+				return true;
+			}
+		}
+		// Failing that return false
+		return false;
+	}
+
+	/*
+	 * Check if all members have been killed
+	 */
 	private bool AllMembersDead() {
-		// Check if any 'transform' objects have any enemies attached
+		// Check if any 'transform' objects have enemies attached
 		foreach(Transform enemyPos in transform) {
 			if(enemyPos.childCount > 0){
 				return false;
@@ -108,18 +153,10 @@ public class EnemyFormation : MonoBehaviour {
 		return true;
 	}
 
-	private bool FreePostiton() {
-		// Check if any 'transform' objects have any enemies attached
-		foreach(Transform enemyPos in transform) {
-			if(enemyPos.childCount > 0){
-				return true;
-			}
-		}
-		// Failing that return true
-		return false;
-	}
-
-	void SpawnEnemies(){
+	/*
+	 * Instantly spawn the full formation of enemies
+	 */
+	void SpawnFullFormation(){
 		foreach(Transform enemyPos in transform) {
 			GameObject enemy = Instantiate (enemyPrefab, enemyPos.transform.position, Quaternion.identity) as GameObject;
 			enemy.transform.parent = enemyPos;
@@ -132,27 +169,4 @@ public class EnemyFormation : MonoBehaviour {
 			direction = -1;
 		}
 	}
-
-	void SpawnUntilFull(){
-		// Fetch the next free position
-		Transform freePos = NextFreePosition();
-		// Create the enemy in the specified position
-		GameObject enemy = Instantiate (enemyPrefab, freePos.position, Quaternion.identity) as GameObject;
-		enemy.transform.parent = freePos;
-
-		if(FreePostiton()){
-			Invoke("SpawnUntilFull", spawnDelaySeconds);
-		}
-	}
-
-	Transform NextFreePosition(){
-		foreach(Transform enemyPos in transform) {
-			if(enemyPos.childCount <= 0){
-				return enemyPos;
-			}
-		}
-		return null;
-	}
-
-
 }
