@@ -14,9 +14,9 @@ public class EnemyFormation : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		foreach(Transform child in transform) {
-			GameObject enemy = Instantiate (enemyPrefab, child.transform.position, Quaternion.identity) as GameObject;
-			enemy.transform.parent = child;
+		foreach(Transform position in transform) {
+			GameObject enemy = Instantiate (enemyPrefab, position.transform.position, Quaternion.identity) as GameObject;
+			enemy.transform.parent = position;
 		}
 
 		if(Random.Range (0, 2) == 1)
@@ -56,9 +56,10 @@ public class EnemyFormation : MonoBehaviour {
 		Gizmos.DrawLine(new Vector3(xmin, ymin, 0), new Vector3(xmin, ymax, 0));
 	}
 	
-	// Update is called once per frame
-	void Update () {
+
 		/*
+		 * Original Update Function
+		 * 
 		if(direction == Direction.LEFT) {
 			transform.position = new Vector3(
 				Mathf.Clamp(this.transform.position.x - speed * Time.deltaTime, xMinFormation, xMaxFormation),
@@ -82,6 +83,8 @@ public class EnemyFormation : MonoBehaviour {
 		}
 		*/
 
+	// Update is called once per frame
+	void Update () {
 
 		// Check for the right edge of the screen
 		if(transform.position.x > xMaxFormation) {
@@ -97,5 +100,20 @@ public class EnemyFormation : MonoBehaviour {
 
 		// Move the formation
 		transform.position += new Vector3(direction * speed * Time.deltaTime, 0, 0);
+
+		if(AllMembersDead())		{
+			Debug.Log ("All Enemies are dead");
+		}
+	}
+
+	bool AllMembersDead() {
+		// Check if any 'transform' objects have any enemies attached
+		foreach(Transform position in transform) {
+			if(position.childCount > 0){
+				return false;
+			}
+		}
+		// Failing that return true
+		return true;
 	}
 }
