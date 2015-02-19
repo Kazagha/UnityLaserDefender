@@ -4,6 +4,7 @@ using System.Collections;
 public class Player : MonoBehaviour {
 	public GameObject laser;
 	public float health;
+	public GameObject PlayerThruster;
 
 	// Beam Variables
 	public float beamSpeed = 500f;
@@ -30,6 +31,11 @@ public class Player : MonoBehaviour {
 		xMin = camera.ViewportToWorldPoint(new Vector3(0, 0, distance)).x + padding;
 		// Find the X Max
 		xMax = camera.ViewportToWorldPoint(new Vector3(1, 1, distance)).x - padding;
+
+		Vector3 thrustPos = this.transform.position += new Vector3(0, 1f , 0);
+		GameObject thrust = Instantiate(PlayerThruster, thrustPos, Quaternion.identity) as GameObject;
+		thrust.transform.parent = this.transform;
+		
 	}
 	
 	// Update is called once per frame
