@@ -15,7 +15,15 @@ public class EnemyFormation : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		SpawnFullFormation();
+		//SpawnFullFormation();
+		SpawnUntilFull();
+
+		if(Random.Range (0, 2) == 1)
+		{
+			direction = 1;
+		} else {
+			direction = -1;
+		}
 
 		// Find the main camera
 		Camera camera = Camera.main;
