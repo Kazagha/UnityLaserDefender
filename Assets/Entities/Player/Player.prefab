@@ -12,6 +12,7 @@ GameObject:
   - 114: {fileID: 11487310}
   - 50: {fileID: 5028050}
   - 60: {fileID: 6093668}
+  - 95: {fileID: 9557992}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -67,6 +68,21 @@ PolygonCollider2D:
       - {x: .49000001, y: -.324999988}
       - {x: .49000001, y: -.208237648}
       - {x: .113741189, y: .224064589}
+--- !u!95 &9557992
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 187310}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7436386b6aa57934d86af089fd4db3a2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11487310
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -83,7 +99,7 @@ MonoBehaviour:
   PlayerThruster: {fileID: 161764, guid: 42ba101dbd421ed48825be3064494eeb, type: 2}
   beamSpeed: 600
   beamOffSet: .300000012
-  beamRepeatRate: .200000003
+  beamRepeatRate: .25
   speed: 12.5
   padding: .5
 --- !u!212 &21287310

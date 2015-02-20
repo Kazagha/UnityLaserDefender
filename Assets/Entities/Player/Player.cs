@@ -13,6 +13,7 @@ public class Player : MonoBehaviour {
 	public float speed = 15f;
 	public float padding = 0.5f;
 	private float beamSide = 1f;
+	private Animator anim;
 
 	private float xMax;
 	private float xMin;
@@ -35,7 +36,9 @@ public class Player : MonoBehaviour {
 		//Vector3 thrustPos = this.transform.position + new Vector3(0, -0.5f , 0f);
 		Vector3 thrustPos = this.transform.position + new Vector3(0, -0.55f , 0f);
 		GameObject thrust = Instantiate(PlayerThruster, thrustPos, Quaternion.Euler(180, 0, 0)) as GameObject;
-		thrust.transform.parent = this.transform;		
+		thrust.transform.parent = this.transform;
+
+		anim = this.gameObject.GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -61,15 +64,16 @@ public class Player : MonoBehaviour {
 		if(Input.GetKeyUp(KeyCode.Space)) {
 			CancelInvoke("FireBeam");
 		}
-
 	}
 
 	void FireBeam()	{
 		// Swap the side that the beam fires on
 		if(beamSide == 1){
 			beamSide = -1;
+			anim.Play("LaserLeft");
 		} else {
 			beamSide = 1;
+			anim.Play("LaserRight");
 		}
 		
 		// Create the beam from the prefab
