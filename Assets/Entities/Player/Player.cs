@@ -32,10 +32,10 @@ public class Player : MonoBehaviour {
 		// Find the X Max
 		xMax = camera.ViewportToWorldPoint(new Vector3(1, 1, distance)).x - padding;
 
-		Vector3 thrustPos = this.transform.position += new Vector3(0, 1f , 0);
-		GameObject thrust = Instantiate(PlayerThruster, thrustPos, Quaternion.identity) as GameObject;
-		thrust.transform.parent = this.transform;
-		
+		//Vector3 thrustPos = this.transform.position + new Vector3(0, -0.5f , 0f);
+		Vector3 thrustPos = this.transform.position + new Vector3(0, -0.55f , 0f);
+		GameObject thrust = Instantiate(PlayerThruster, thrustPos, Quaternion.Euler(180, 0, 0)) as GameObject;
+		thrust.transform.parent = this.transform;		
 	}
 	
 	// Update is called once per frame

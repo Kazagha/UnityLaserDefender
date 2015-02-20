@@ -26,7 +26,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187310}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.84000015, z: 0}
+  m_LocalPosition: {x: 0, y: -3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -80,7 +80,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   laser: {fileID: 106320, guid: a4b47500a06b01e42be66b114c584034, type: 2}
   health: 250
-  beamSpeed: 500
+  PlayerThruster: {fileID: 161764, guid: 42ba101dbd421ed48825be3064494eeb, type: 2}
+  beamSpeed: 600
   beamOffSet: .300000012
   beamRepeatRate: .200000003
   speed: 12.5
