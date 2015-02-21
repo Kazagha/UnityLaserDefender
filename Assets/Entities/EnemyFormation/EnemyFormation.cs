@@ -113,8 +113,8 @@ public class EnemyFormation : MonoBehaviour {
 		// Fetch the next free position
 		Transform freePos = NextFreePosition();
 		// Create the enemy in the specified position
-		GameObject enemy = Instantiate (enemyPrefab, freePos.position, Quaternion.identity) as GameObject;
-		enemy.transform.parent = freePos;
+		GameObject Enemy = (Instantiate (enemyPrefab, freePos.position, Quaternion.identity)) as GameObject;
+		Enemy.transform.parent = freePos;
 		
 		if(FreePostiton()){
 			Invoke("SpawnUntilFull", spawnDelaySeconds);
