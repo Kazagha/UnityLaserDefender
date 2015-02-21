@@ -34,8 +34,8 @@ public class Player : MonoBehaviour {
 		xMax = camera.ViewportToWorldPoint(new Vector3(1, 1, distance)).x - padding;
 
 		//Vector3 thrustPos = this.transform.position + new Vector3(0, -0.5f , 0f);
-		Vector3 thrustPos = this.transform.position + new Vector3(0, -0.55f , 0f);
-		GameObject thrust = Instantiate(PlayerThruster, thrustPos, Quaternion.Euler(180, 0, 0)) as GameObject;
+		Vector3 thrustPos = this.transform.position + new Vector3(0, -0.4f , 0f);
+		GameObject thrust = Instantiate(PlayerThruster, thrustPos, Quaternion.Euler(90, 0, 0)) as GameObject;
 		thrust.transform.parent = this.transform;
 
 		anim = this.gameObject.GetComponent<Animator>();
