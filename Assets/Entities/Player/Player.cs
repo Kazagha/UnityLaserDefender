@@ -70,10 +70,10 @@ public class Player : MonoBehaviour {
 		// Swap the side that the beam fires on
 		if(beamSide == 1){
 			beamSide = -1;
-			anim.Play("LaserLeft");
+			//anim.Play("LaserLeft");
 		} else {
 			beamSide = 1;
-			anim.Play("LaserRight");
+			//anim.Play("LaserRight");
 		}
 		
 		// Create the beam from the prefab
