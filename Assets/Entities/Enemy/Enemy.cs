@@ -9,11 +9,16 @@ public class Enemy : MonoBehaviour {
 	public float projectileDelay = 2f;
 	public float projectileVariance = 1f;
 	public float shotsPerSecond = .5f;
+	public int scoreValue = 75;
 
 	private float projectileTimer;
+	private ScoreKeeper keeper;
 
 	void Start(){
 		projectileTimer = Random.Range(-projectileVariance, projectileVariance);
+
+		// Locate the score keeper
+		keeper = GameObject.Find("Score").GetComponent<ScoreKeeper>();
 	}
 
 	void OnTriggerEnter2D(Collider2D col) {
