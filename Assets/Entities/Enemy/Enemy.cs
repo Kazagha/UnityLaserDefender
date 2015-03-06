@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour {
 	public float projectileDelay = 2f;
 	public float projectileVariance = 1f;
 	public float shotsPerSecond = .5f;
-	public int scoreValue = 75;
+	public int scoreValue = 150;
 
 	private float projectileTimer;
 	private ScoreKeeper keeper;
