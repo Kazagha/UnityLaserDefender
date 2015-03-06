@@ -22,6 +22,7 @@ public class ScoreKeeper : MonoBehaviour {
 	}
 	
 	private void UpdateText(){
-		scoreText.text = "Score: ";
+		//scoreText.text = scoreInt.ToString("3D");
+		scoreText.text = scoreInt.ToString().PadLeft(4, '0');
 	}
 }
