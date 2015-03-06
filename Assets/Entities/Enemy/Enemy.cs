@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour {
 		projectileTimer = Random.Range(-projectileVariance, projectileVariance);
 
 		// Locate the score keeper
-		keeper = GameObject.Find("Score").GetComponent<ScoreKeeper>();
+		keeper = GameObject.Find("Score").GetComponent<ScoreKeeper>() as ScoreKeeper;
 	}
 
 	void OnTriggerEnter2D(Collider2D col) {
@@ -35,6 +35,7 @@ public class Enemy : MonoBehaviour {
 			// If there is no health left destroy the object
 			if(health <= 0)	{
 				Destroy(this.gameObject);
+				keeper.AddScore(scoreValue);
 			}
 		}
 	}
