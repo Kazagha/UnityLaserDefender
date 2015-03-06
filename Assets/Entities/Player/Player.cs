@@ -80,6 +80,8 @@ public class Player : MonoBehaviour {
 		GameObject beam = Instantiate(laser, transform.position + new Vector3((beamSide * beamOffSet), 0, 0), Quaternion.identity) as GameObject;
 		// Apply velocity to the rigid body of the laser
 		beam.rigidbody2D.velocity = new Vector3(0, beamSpeed * Time.deltaTime, 0);
+		// Play a souud
+		beam.audio.Play();
 	}
 
 	void OnTriggerEnter2D(Collider2D col) {
