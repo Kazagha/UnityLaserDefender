@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour {
 	public float projectileVariance = 1f;
 	public float shotsPerSecond = .5f;
 	public int scoreValue = 150;
+	public AudioClip explode;
 
 	private float projectileTimer;
 	private ScoreKeeper keeper;
@@ -36,6 +37,7 @@ public class Enemy : MonoBehaviour {
 			if(health <= 0)	{
 				Destroy(this.gameObject);
 				keeper.AddScore(scoreValue);
+				AudioSource.PlayClipAtPoint(explode, transform.position, 1f);
 			}
 		}
 	}
@@ -61,6 +63,8 @@ public class Enemy : MonoBehaviour {
 		GameObject beam = Instantiate(laser, transform.position + new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
 		// Apply velocity to the rigid body of the laser
 		beam.rigidbody2D.velocity = new Vector3(0, -beamSpeed * Time.deltaTime, 0);
+		// Create a sound
+		AudioSource.PlayClipAtPoint(beam.audio.clip, transform.position, 0.1f);
 		
 		projectileTimer = Random.Range(-projectileVariance, projectileVariance);
 	}

@@ -90,6 +90,8 @@ MonoBehaviour:
   projectileDelay: 2
   projectileVariance: 1
   shotsPerSecond: 1
+  scoreValue: 150
+  explode: {fileID: 8300000, guid: 069024392aeefd545a96d6194cbcb128, type: 3}
 --- !u!212 &21238908
 SpriteRenderer:
   m_ObjectHideFlags: 1

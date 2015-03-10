@@ -81,7 +81,7 @@ public class Player : MonoBehaviour {
 		// Apply velocity to the rigid body of the laser
 		beam.rigidbody2D.velocity = new Vector3(0, beamSpeed * Time.deltaTime, 0);
 		// Play a souud
-		beam.audio.Play();
+		AudioSource.PlayClipAtPoint(beam.audio.clip, transform.position, 0.1f);
 	}
 
 	void OnTriggerEnter2D(Collider2D col) {
