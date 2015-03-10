@@ -12,7 +12,7 @@ GameObject:
   - 50: {fileID: 5084378}
   - 114: {fileID: 11454540}
   - 61: {fileID: 6178726}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: EnemyLaser
   m_TagString: Enemy
   m_Icon: {fileID: 0}
