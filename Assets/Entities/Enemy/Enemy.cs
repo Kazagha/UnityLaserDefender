@@ -37,7 +37,7 @@ public class Enemy : MonoBehaviour {
 			if(health <= 0)	{
 				Destroy(this.gameObject);
 				keeper.AddScore(scoreValue);
-				AudioSource.PlayClipAtPoint(explode, transform.position, 1f);
+				AudioSource.PlayClipAtPoint(explode, transform.position, .5f);
 			}
 		}
 	}

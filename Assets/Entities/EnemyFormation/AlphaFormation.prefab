@@ -249,7 +249,7 @@ MonoBehaviour:
   enemyPrefab: {fileID: 138908, guid: c292307e21bd5cf4d97f26569708a643, type: 2}
   width: 5
   height: 4
-  speed: 2.5
+  speed: 5
   spawnDelaySeconds: .25
 --- !u!114 &11453640
 MonoBehaviour:
