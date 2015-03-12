@@ -65,7 +65,7 @@ public class Player : MonoBehaviour {
 		if(Input.GetKeyUp(KeyCode.Space)) {
 			CancelInvoke("FireBeam");
 		}
-	}
+	}	
 
 	void FireBeam()	{
 		// Swap the side that the beam fires on
@@ -98,8 +98,13 @@ public class Player : MonoBehaviour {
 			
 			// If there is no health left destroy the object
 			if(health <= 0)	{
-				Destroy(this.gameObject);
+				Die ();
 			}
-		//}
+	}
+
+	void Die(){
+		LevelManager man = GameObject.Find("LevelManager").GetComponent<LevelManager>() as LevelManager;
+		Destroy(this.gameObject);
+		man.LoadLevel("Lose");
 	}
 }
