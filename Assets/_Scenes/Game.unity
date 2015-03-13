@@ -3423,9 +3423,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b567ca154305c2e47944862a20faf579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startClip: {fileID: 8300000, guid: dc72db329cc6b094ab4930536952ec45, type: 3}
-  gameClip: {fileID: 0}
-  loseClip: {fileID: 0}
+  startClip: {fileID: 8300000, guid: b40e396cee9c0284ab274868cb0319e5, type: 3}
+  gameClip: {fileID: 8300000, guid: dc72db329cc6b094ab4930536952ec45, type: 3}
+  loseClip: {fileID: 8300000, guid: 75bb85f4bd5d9ac4f93894ad7a7e1da5, type: 3}
 --- !u!82 &1659166160
 AudioSource:
   m_ObjectHideFlags: 0

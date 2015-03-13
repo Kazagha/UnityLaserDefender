@@ -128,6 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 100
+  fireSound: {fileID: 8300000, guid: 2e1a7227952d19c4b809756d0f31c7ed, type: 3}
 --- !u!212 &21206320
 SpriteRenderer:
   m_ObjectHideFlags: 1
