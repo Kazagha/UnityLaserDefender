@@ -101,9 +101,9 @@ public class EnemyFormation : MonoBehaviour {
 		transform.position += new Vector3(direction * speed * Time.deltaTime, 0, 0);
 
 		// Check if all enemies are dead
-		if(AllMembersDead())		{
-			SpawnUntilFull();
-		}
+		//if(AllMembersDead())		{
+		//	SpawnUntilFull();
+		//}
 	}
 
 	/*
