@@ -38,6 +38,8 @@ public class EnemyFormation : MonoBehaviour {
 		xMinFormation = camera.ViewportToWorldPoint(new Vector3(0, 0, distance)).x + padding;
 		// Find the X Max
 		xMaxFormation = camera.ViewportToWorldPoint(new Vector3(1, 1, distance)).x - padding;
+
+		//transform.position = new Vector3(0, 0, 0);
 	}
 
 	void OnDrawGizmos()	{
@@ -150,7 +152,7 @@ public class EnemyFormation : MonoBehaviour {
 	/*
 	 * Check if all members have been killed
 	 */
-	private bool AllMembersDead() {
+	public bool AllMembersDead() {
 		// Check if any 'transform' objects have enemies attached
 		foreach(Transform enemyPos in transform) {
 			if(enemyPos.childCount > 0){
@@ -176,5 +178,13 @@ public class EnemyFormation : MonoBehaviour {
 		} else {
 			direction = -1;
 		}
+	}
+
+	public float GetYMax(){	
+		// Find distance between the camera and the object
+		float distance = transform.position.z - camera.transform.position.z;
+
+		// Find the Y Max
+		return camera.ViewportToWorldPoint(new Vector3(1, 1, distance)).y - (height * 0.5f);
 	}
 }
